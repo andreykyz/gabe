@@ -1,6 +1,6 @@
 package types
 
-import "strings"
+import "bytes"
 
 type Shell struct {
 	Running       bool
@@ -19,5 +19,10 @@ func CreateShell() *Shell {
 }
 
 func (s Shell) JoinArgs() string {
-	return strings.Join(s.C_args, " ")
+	var buffer bytes.Buffer
+	for _, value := range s.C_args {
+		buffer.WriteString(value)
+		buffer.WriteString(" ")
+	}
+	return buffer.String()
 }
