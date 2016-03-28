@@ -14,12 +14,7 @@ func HandleInput(sh *types.Shell, line string) {
 	if len(sh.C_all) > 1 {
 		sh.C_args = sh.C_all[1:]
 	}
-	switch sh.C_cmd {
-	case "exit":
-		sh.Running = false
-	default:
-		Exec(sh)
-	}
+	Exec(sh)
 
 	//sh.Running = false // debug
 }

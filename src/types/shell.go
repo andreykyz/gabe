@@ -12,8 +12,8 @@ func CreateShell() *Shell {
 	sh := &Shell{
 		true,
 		"",
-		make([]string, 1),
-		make([]string, 1),
+		make([]string, 0),
+		make([]string, 0),
 	}
 	return sh
 }
@@ -25,4 +25,11 @@ func (s Shell) JoinArgs() string {
 		buffer.WriteString(" ")
 	}
 	return buffer.String()
+}
+
+func (s *Shell) Tick() {
+	// clear current commands for next loop
+	// TODO: implement history
+	s.C_cmd = ""
+	s.C_all, s.C_args = make([]string, 0), make([]string, 0)
 }

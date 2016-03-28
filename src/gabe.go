@@ -34,6 +34,7 @@ func main() {
 		} else {
 			cmd.HandleInput(sh, line)
 		}
+		sh.Tick()
 		//sh.Running = false // debug
 	}
 }
